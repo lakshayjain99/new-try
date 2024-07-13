@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asking for Apology</title>
+    <style>
+        /* Centering container */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align items to the top */
+            flex-direction: row; /* Align items horizontally */
+            min-height: 100vh; /* Ensure the container fills the viewport */
+            padding: 20px; /* Add padding for spacing */
+        }
+
+        /* Style for buttons */
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 10px;
+        }
+        .button.yes {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .button.no {
+            background-color: #f44336;
+            color: white;
+        }
+        .button.context {
+            background-color: #2196F3;
+            color: white;
+        }
+        .button.video {
+            background-color: #ff9800;
+            color: white;
+        }
+        .text {
+            font-size: 24px;
+            margin-right: 20px; /* Add margin to separate text from image */
+            text-align: center; /* Center text */
+        }
+
+        /* Style for the image */
+        .image {
+            max-width: 20%; /* Set maximum width for the image */
+            align-self: flex-start; /* Align image to the top */
+        }
+
+        /* Style for the top section */
+        .top-section {
+            text-align: center; /* Center align the text and button */
+            margin-bottom: 20px; /* Add space below the top section */
+        }
+
+        /* Centering the buttons */
+        .buttons {
+            display: flex;
+            justify-content: center; /* Center buttons horizontally */
+            margin-top: 20px; /* Add space above the buttons */
+        }
+
+        /* Centering the video buttons */
+        .video-buttons {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center; /* Center buttons horizontally */
+            margin-top: 20px; /* Add space above the video buttons */
+        }
+
+        /* Style for video descriptions */
+        .video-description {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .video-description .text {
+            margin-right: 20px; /* Add space between text and button */
+        }
+    </style>
+</head>
+<body>
+
+<audio autoplay loop>
+    <source src="{{ url_for('static', filename='sorry_sorry.mp3') }}" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<!-- Top section with explanation and context button -->
+<div class="top-section">
+    <p>Click here before proceeding</p>
+    <a class="button context" href="/context">Context</a>
+</div>
+
+<div class="container">
+    <div>
+        <div class="text">I now (in the past 6 months) have realized what I did was completely wrong. Gaslighting you and what not.</div>
+        <div class="text">I can't justify my actions at any level.<br>
+        I know, tu gyada yaad nahi rakhti hai, na gyada emotions show karti, maaf kardeti hai tu sabko, grudges nahi rakhti.<br>
+        You are a great human being, a great soul.<br>
+        So, here I am, in front of you, guilty of every charge and ready to accept any punishment for my mistakes, pleading for an apology.
+        </div>
+        <br><br><br><br>
+        <div class="text">Please Maaf Kardo</div>
+        <!-- Yes and No Buttons -->
+        <div class="buttons">
+            <a class="button yes" href="/yes">Yes</a>
+            <button class="button no" id="noButton">No</button>
+        </div>
+    </div>
+    <!-- Image -->
+    <img class="image" src="{{ url_for('static', filename='apology.jpeg') }}" alt="Your Image Description">
+</div>
+
+<!-- Video Buttons Section -->
+<div class="video-buttons">
+    <div class="text">Some shorts to lighten up the mood</div>
+    <div class="video-description">
+        <div class="text">I literally tried to recreate this but abhi esse se kaam chalao (pahadi song) </div>
+        <a class="button video" href="{{ url_for('static', filename='badal.mp4') }}">Video 1</a>
+    </div>
+    <div class="video-description">
+        <div class="text">This video shares moments we cherished together.</div>
+        <a class="button video" href="{{ url_for('static', filename='video2.mp4') }}">Video 2</a>
+    </div>
+    <div class="video-description">
+        <div class="text">This video outlines my plans to improve and make amends.</div>
+        <a class="button video" href="{{ url_for('static', filename='video3.mp4') }}">Video 3</a>
+    </div>
+</div>
+
+<script>
+    // Show the popup when the page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        alert("Dear Jyoti Bisht,\n\nI created this website to express how truly sorry I am for the things I've said and for my actions in the past. I hope you can find it in your heart to forgive me.\nJust bear with me for the next 5 minutes. I promise, you won't regret it.\n\nClick OK to proceed.");
+    });
+
+    // Move the "No" button to a different location on the page when clicked
+    document.getElementById('noButton').addEventListener('click', function() {
+        var button = document.querySelector('.no');
+        var newPosition = document.createElement('div');
+        newPosition.style.position = 'absolute';
+        newPosition.style.top = Math.random() * window.innerHeight + 'px';
+        newPosition.style.left = Math.random() * window.innerWidth + 'px';
+        document.body.appendChild(newPosition);
+        newPosition.appendChild(button);
+    });
+
+</script>
+
+</body>
+</html>
